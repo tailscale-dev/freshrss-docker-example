@@ -1,3 +1,5 @@
+# Rename this file to docker-compose.yml (deleting "-local") to use it with Docker.
+
 services:
   freshrss:
     image: freshrss/freshrss:latest
