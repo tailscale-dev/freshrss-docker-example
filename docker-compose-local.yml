@@ -1,0 +1,24 @@
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    container_name: freshrss
+    hostname: freshrss
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+    env_file:
+      - .env
+    environment:
+      TZ: America/New_York
+      CRON_MIN: '3,33'
+#      TRUSTED_PROXY: 172.16.0.1/12 192.168.0.1/16  # unnecessary in local/no-serve setup; restore if using Serve
+    ports:
+      - "8080:80"          # all interfaces — reachable on the LAN AND over the tailnet
+    volumes:
+      - data:/var/www/FreshRSS/data
+      - extensions:/var/www/FreshRSS/extensions
+
+volumes:
+  data:
+  extensions:
